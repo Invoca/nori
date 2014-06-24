@@ -1,9 +1,9 @@
 require "nokogiri"
 
-module Nori
+module NoriSavon
   module Parser
 
-    # = Nori::Parser::Nokogiri
+    # = NoriSavon::Parser::Nokogiri
     #
     # Nokogiri SAX parser.
     module Nokogiri
@@ -16,7 +16,7 @@ module Nori
         end
 
         def start_element(name, attrs = [])
-          stack.push Nori::XMLUtilityNode.new(nori, name, Hash[*attrs.flatten])
+          stack.push NoriSavon::XMLUtilityNode.new(nori, name, Hash[*attrs.flatten])
         end
 
         def end_element(name)

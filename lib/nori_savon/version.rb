@@ -1,4 +1,4 @@
-module Nori
+module NoriSavon
 
   VERSION = "1.1.5"
 

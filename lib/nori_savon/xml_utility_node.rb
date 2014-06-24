@@ -5,10 +5,10 @@ require "time"
 require "yaml"
 require "bigdecimal"
 
-require "nori/string_with_attributes"
-require "nori/string_io_file"
+require "nori_savon/string_with_attributes"
+require "nori_savon/string_io_file"
 
-module Nori
+module NoriSavon
 
   # This is a slighly modified version of the XMLUtilityNode from
   # http://merb.devjavu.com/projects/merb/ticket/95 (has.sox@gmail.com)

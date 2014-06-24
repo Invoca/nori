@@ -1,17 +1,17 @@
 require "spec_helper"
 
-describe Nori::Parser do
-  let(:parser) { Nori::Parser }
+describe NoriSavon::Parser do
+  let(:parser) { NoriSavon::Parser }
 
   describe "::PARSERS" do
     it "should return a Hash of parser details" do
-      Nori::Parser::PARSERS.should == { :rexml => "REXML", :nokogiri => "Nokogiri" }
+      NoriSavon::Parser::PARSERS.should == { :rexml => "REXML", :nokogiri => "Nokogiri" }
     end
   end
 
   describe ".use" do
     it "should default to REXML" do
-      parser.use.should == Nori::Parser::DEFAULT
+      parser.use.should == NoriSavon::Parser::DEFAULT
     end
 
     it "should accept a parser to use" do
@@ -19,8 +19,8 @@ describe Nori::Parser do
       parser.use.should == :nokogiri
 
       # reset to default
-      parser.use = Nori::Parser::DEFAULT
-      parser.use.should == Nori::Parser::DEFAULT
+      parser.use = NoriSavon::Parser::DEFAULT
+      parser.use.should == NoriSavon::Parser::DEFAULT
     end
 
     it "should raise an ArgumentError in case of an invalid parser" do
@@ -34,10 +34,10 @@ describe Nori::Parser do
     end
   end
 
-  describe ".parse with different nori" do
+  describe ".parse with different nori_savon" do
     let(:other_nori) do
       module OtherNori
-        extend Nori
+        extend NoriSavon
       end
       OtherNori.configure do |config|
         config.convert_tags_to { |tag| tag.upcase }

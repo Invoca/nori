@@ -1,6 +1,6 @@
 require "bundler/gem_tasks"
 
-desc "Benchmark Nori parsers"
+desc "Benchmark NoriSavon parsers"
 task :benchmark do
   require "benchmark/benchmark"
 end

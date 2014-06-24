@@ -1,9 +1,9 @@
 require "rexml/parsers/baseparser"
 
-module Nori
+module NoriSavon
   module Parser
 
-    # = Nori::Parser::REXML
+    # = NoriSavon::Parser::REXML
     #
     # REXML pull parser.
     module REXML
@@ -20,7 +20,7 @@ module Nori
           when :end_doctype, :start_doctype
             # do nothing
           when :start_element
-            stack.push Nori::XMLUtilityNode.new(nori, event[1], event[2])
+            stack.push NoriSavon::XMLUtilityNode.new(nori, event[1], event[2])
           when :end_element
             if stack.size > 1
               temp = stack.pop

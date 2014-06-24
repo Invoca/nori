@@ -1,6 +1,6 @@
-module Nori
+module NoriSavon
 
-  # = Nori::Parser
+  # = NoriSavon::Parser
   #
   # Manages the parser classes. Currently supports:
   #
@@ -14,7 +14,7 @@ module Nori
     # List of available parsers.
     PARSERS = { :rexml => "REXML", :nokogiri => "Nokogiri" }
 
-    # Returns the parser to use. Defaults to <tt>Nori::Parser::REXML</tt>.
+    # Returns the parser to use. Defaults to <tt>NoriSavon::Parser::REXML</tt>.
     def self.use
       @use ||= DEFAULT
     end
@@ -27,7 +27,7 @@ module Nori
 
     # Returns the parsed +xml+ using the parser to use. Raises an +ArgumentError+
     # unless the optional or default +parser+ exists.
-    def self.parse(xml, parser = nil, nori = Nori)
+    def self.parse(xml, parser = nil, nori = NoriSavon)
       load_parser(parser).parse(xml, nori)
     end
 
@@ -35,7 +35,7 @@ module Nori
 
     # Raises an +ArgumentError+ unless the +parser+ exists.
     def self.validate_parser!(parser)
-      raise ArgumentError, "Invalid Nori parser: #{parser}" unless PARSERS[parser]
+      raise ArgumentError, "Invalid NoriSavon parser: #{parser}" unless PARSERS[parser]
     end
 
     # Requires and returns the +parser+ to use.
@@ -43,7 +43,7 @@ module Nori
       parser ||= use
       validate_parser! parser
 
-      require "nori/parser/#{parser}"
+      require "nori_savon/parser/#{parser}"
       const_get PARSERS[parser]
     end
 

@@ -1,9 +1,9 @@
-require "nori/version"
-require "nori/core_ext"
-require "nori/parser"
-require "nori/xml_utility_node"
+require "nori_savon/version"
+require "nori_savon/core_ext"
+require "nori_savon/parser"
+require "nori_savon/xml_utility_node"
 
-module Nori
+module NoriSavon
   extend self
 
   # Translates the given +xml+ to a Hash. Accepts an optional +parser+ to use.

@@ -1,4 +1,4 @@
-module Nori
+module NoriSavon
   class StringIOFile < StringIO
 
     attr_accessor :original_filename, :content_type

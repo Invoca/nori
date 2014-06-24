@@ -1,4 +1,4 @@
-module Nori
+module NoriSavon
   module CoreExt
     module String
 
@@ -18,4 +18,4 @@ module Nori
   end
 end
 
-String.send :include, Nori::CoreExt::String
+String.send :include, NoriSavon::CoreExt::String

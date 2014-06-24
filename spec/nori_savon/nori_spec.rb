@@ -1,8 +1,8 @@
 require "spec_helper"
 
-describe Nori do
+describe NoriSavon do
 
-  Nori::Parser::PARSERS.each do |parser, class_name|
+  NoriSavon::Parser::PARSERS.each do |parser, class_name|
     context "using the :#{parser} parser" do
 
       let(:parser) { parser }
@@ -93,9 +93,9 @@ describe Nori do
 
       context "without advanced typecasting" do
         around do |example|
-          Nori.advanced_typecasting = false
+          NoriSavon.advanced_typecasting = false
           example.run
-          Nori.advanced_typecasting = true
+          NoriSavon.advanced_typecasting = true
         end
 
         it "should not transform 'true'" do
@@ -121,9 +121,9 @@ describe Nori do
 
       context "with advanced typecasting" do
         around do |example|
-          Nori.advanced_typecasting = true
+          NoriSavon.advanced_typecasting = true
           example.run
-          Nori.advanced_typecasting = false
+          NoriSavon.advanced_typecasting = false
         end
 
         it "should transform 'true' to TrueClass" do
@@ -296,9 +296,9 @@ describe Nori do
 
       context "with strip_namespaces set to true" do
         around do |example|
-          Nori.strip_namespaces = true
+          NoriSavon.strip_namespaces = true
           example.run
-          Nori.strip_namespaces = false
+          NoriSavon.strip_namespaces = false
         end
 
         it "should strip the namespace from every tag" do
@@ -323,9 +323,9 @@ describe Nori do
 
       context "with convert_tags_to set to a custom formula" do
         around do |example|
-          Nori.convert_tags_to { |tag| tag.snakecase.to_sym }
+          NoriSavon.convert_tags_to { |tag| tag.snakecase.to_sym }
           example.run
-          Nori.convert_tags_to(nil)
+          NoriSavon.convert_tags_to(nil)
         end
 
         it "transforms the tags to snakecase Symbols" do
@@ -501,7 +501,7 @@ describe Nori do
           'parent_id' => nil
         }
 
-        # puts Nori.parse(topics_xml)['topics'].first.inspect
+        # puts NoriSavon.parse(topics_xml)['topics'].first.inspect
         parse(topics_xml)["topics"].first.each do |k,v|
           v.should == expected_topic_hash[k]
         end
@@ -668,11 +668,11 @@ describe Nori do
 
     end
 
-    describe "using different nori" do
+    describe "using different nori_savon" do
       let(:parser) { parser }
       let(:different_nori) do
         module DifferentNori
-          extend Nori
+          extend NoriSavon
         end
         DifferentNori.configure do |config|
           config.convert_tags_to { |tag| tag.upcase }
@@ -680,7 +680,7 @@ describe Nori do
         DifferentNori
       end
 
-      it "should transform with different nori" do
+      it "should transform with different nori_savon" do
         xml = "<SomeThing>xml</SomeThing>"
         parse(xml).should == { "SomeThing" => "xml" }
         different_nori.parse(xml, parser).should == { "SOMETHING" => "xml" }
@@ -689,7 +689,7 @@ describe Nori do
   end
 
   def parse(xml)
-    Nori.parse xml, parser
+    NoriSavon.parse xml, parser
   end
 
 end
