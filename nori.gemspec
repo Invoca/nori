@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "nori/version"
 
 Gem::Specification.new do |s|
-  s.name        = "nori"
+  s.name        = "nori_old_savon"
   s.version     = Nori::VERSION
   s.authors     = ["Daniel Harrington", "John Nunemaker", "Wynn Netherland"]
   s.email       = "me@rubiii.com"

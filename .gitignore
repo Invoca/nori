@@ -5,3 +5,7 @@ coverage
 *.gem
 .bundle
 Gemfile.lock
+/.idea
+.idea
+.ruby-version
+
